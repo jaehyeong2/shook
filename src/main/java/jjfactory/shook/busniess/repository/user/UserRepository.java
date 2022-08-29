@@ -1,4 +1,4 @@
-package jjfactory.shook.busniess.repository;
+package jjfactory.shook.busniess.repository.user;
 
 import jjfactory.shook.busniess.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
