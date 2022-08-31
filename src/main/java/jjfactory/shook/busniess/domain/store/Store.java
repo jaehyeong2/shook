@@ -2,6 +2,7 @@ package jjfactory.shook.busniess.domain.store;
 
 import jjfactory.shook.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
@@ -22,4 +23,10 @@ public class Store extends BaseTimeEntity {
     @Comment("가게 등급")
     @Column(nullable = false)
     private String grade;
+
+    @Builder
+    public Store(String name, String grade) {
+        this.name = name;
+        this.grade = grade;
+    }
 }

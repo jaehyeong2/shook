@@ -26,6 +26,8 @@ public class User extends BaseTimeEntity {
     private String email;
     private String phone;
 
+    private int wishCount;
+
     @Enumerated(EnumType.STRING)
     private UserGrade grade;  // 회원 등급
 
@@ -41,12 +43,13 @@ public class User extends BaseTimeEntity {
     private Role userRole;
 
     @Builder
-    public User(String username, String password, String name, String email, String phone, UserGrade grade, int userType, LocalDateTime lastLoginDate, int status, Role userRole) {
+    public User(String username, String password, String name, String email, String phone, int wishCount, UserGrade grade, int userType, LocalDateTime lastLoginDate, int status, Role userRole) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.wishCount = wishCount;
         this.grade = grade;
         this.userType = userType;
         this.lastLoginDate = lastLoginDate;
@@ -64,7 +67,15 @@ public class User extends BaseTimeEntity {
                 .email(dto.getEmail())
                 .grade(UserGrade.FRIEND)
                 .status(0)
+                .wishCount(0)
                 .build();
     }
 
+    public void increaseWishCount() {
+        this.wishCount += 1;
+    }
+
+    public void decreaseWishCount() {
+        this.wishCount += 1;
+    }
 }
