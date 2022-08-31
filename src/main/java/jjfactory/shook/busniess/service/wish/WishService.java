@@ -7,6 +7,8 @@ import jjfactory.shook.busniess.domain.wish.Wish;
 import jjfactory.shook.busniess.repository.product.ProductRepository;
 import jjfactory.shook.busniess.repository.user.UserRepository;
 import jjfactory.shook.busniess.repository.wish.WishRepository;
+import jjfactory.shook.busniess.repository.wish.WishQueryRepository;
+import jjfactory.shook.busniess.response.WishDetailRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +20,13 @@ import java.util.NoSuchElementException;
 @Service
 public class WishService {
     private final WishRepository wishRepository;
+    private final WishQueryRepository wishQueryRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+
+    public WishDetailRes findWishDetail(Long wishId){
+        return wishQueryRepository.findWish(wishId);
+    }
 
     public Long create(Long userId,Long productId){
         User user = getUser(userId);
@@ -37,6 +44,7 @@ public class WishService {
 
         User user = wish.getUser();
         user.decreaseWishCount();
+//        if(user.getWishCount() < 0) throw new
         return "y";
     }
 

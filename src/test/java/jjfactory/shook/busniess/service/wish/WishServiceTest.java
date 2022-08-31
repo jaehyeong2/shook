@@ -5,6 +5,7 @@ import jjfactory.shook.busniess.domain.store.Store;
 import jjfactory.shook.busniess.domain.user.User;
 import jjfactory.shook.busniess.domain.wish.Wish;
 import jjfactory.shook.busniess.repository.wish.WishRepository;
+import jjfactory.shook.busniess.response.WishDetailRes;
 import jjfactory.shook.global.entity.DeleteStatus;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -41,8 +42,23 @@ class WishServiceTest {
         em.persist(wogud);
         store = Store.builder().name("storeA").grade("1").build();
         em.persist(store);
-        productA = Product.builder().name("productA").build();
+        productA = Product.builder().name("productA").price(1000).store(store).build();
         em.persist(productA);
+    }
+
+    @Test
+    @DisplayName("찜 상세 조회")
+    void findOne() {
+        // given
+        Long wishId = wishService.create(wogud.getId(), productA.getId());
+
+        // when
+        WishDetailRes res = wishService.findWishDetail(wishId);
+
+        // then
+        assertThat(res.getPrice()).isEqualTo(1000);
+        assertThat(res.getProductName()).isEqualTo("productA");
+        assertThat(res.getStoreName()).isEqualTo("storeA");
     }
 
     @Test
