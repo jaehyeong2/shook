@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class ProductCreate {
+public class ProductUpdate {
     private int price;
     private int stockQuantity;
     private String name;

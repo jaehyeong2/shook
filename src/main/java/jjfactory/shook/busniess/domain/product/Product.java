@@ -2,6 +2,7 @@ package jjfactory.shook.busniess.domain.product;
 
 import jjfactory.shook.busniess.domain.store.Store;
 import jjfactory.shook.busniess.request.ProductCreate;
+import jjfactory.shook.busniess.request.ProductUpdate;
 import jjfactory.shook.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -23,19 +24,28 @@ public class Product extends BaseTimeEntity {
     private Store store;
     private String name;
     private int price;
+    private int stockQuantity;
 
     @Builder
-    public Product(Store store, String name, int price) {
+    public Product(Store store, String name, int price, int stockQuantity) {
         this.store = store;
         this.name = name;
         this.price = price;
+        this.stockQuantity = stockQuantity;
     }
 
-    public static Product create(ProductCreate dto,Store store){
+    public static Product addProduct(ProductCreate dto, Store store){
         return Product.builder()
                 .name(dto.getName())
+                .stockQuantity(dto.getStockQuantity())
                 .price(dto.getPrice())
                 .store(store)
                 .build();
     }
+
+    public void modify(ProductUpdate dto) {
+        this.name = dto.getName();
+        this.price = dto.getPrice();
+    }
+
 }

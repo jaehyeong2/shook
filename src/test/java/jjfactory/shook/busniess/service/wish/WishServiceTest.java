@@ -6,13 +6,16 @@ import jjfactory.shook.busniess.domain.user.User;
 import jjfactory.shook.busniess.domain.wish.Wish;
 import jjfactory.shook.busniess.repository.wish.WishRepository;
 import jjfactory.shook.busniess.response.WishDetailRes;
+import jjfactory.shook.busniess.response.WishRes;
 import jjfactory.shook.global.entity.DeleteStatus;
+import jjfactory.shook.global.response.PagingRes;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -59,6 +62,25 @@ class WishServiceTest {
         assertThat(res.getPrice()).isEqualTo(1000);
         assertThat(res.getProductName()).isEqualTo("productA");
         assertThat(res.getStoreName()).isEqualTo("storeA");
+    }
+
+    @Test
+    @DisplayName("개인 찜 페이지 성공")
+    void WishServiceTest() {
+        // given
+        for (int i = 0; i < 25; i++) {
+            wishService.create(wogud.getId(), productA.getId());
+        }
+
+        // when
+        PagingRes<WishRes> myWishes = wishService.findMyWishes(PageRequest.of(2, 10), wogud.getId());
+
+        // then
+        assertThat(myWishes.getTotalPage()).isEqualTo(3);
+        assertThat(myWishes.getTotalCount()).isEqualTo(25);
+        assertThat(myWishes.getCurrentPage()).isEqualTo(3);
+
+        //TODO 수정 필요
     }
 
     @Test

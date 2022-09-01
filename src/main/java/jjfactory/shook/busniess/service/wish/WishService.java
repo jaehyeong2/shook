@@ -9,7 +9,11 @@ import jjfactory.shook.busniess.repository.user.UserRepository;
 import jjfactory.shook.busniess.repository.wish.WishRepository;
 import jjfactory.shook.busniess.repository.wish.WishQueryRepository;
 import jjfactory.shook.busniess.response.WishDetailRes;
+import jjfactory.shook.busniess.response.WishRes;
+import jjfactory.shook.global.response.PagingRes;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +30,10 @@ public class WishService {
 
     public WishDetailRes findWishDetail(Long wishId){
         return wishQueryRepository.findWish(wishId);
+    }
+
+    public PagingRes<WishRes> findMyWishes(Pageable pageable, Long userid){
+        return new PagingRes<>(wishQueryRepository.findWishes(pageable,userid));
     }
 
     public Long create(Long userId,Long productId){
