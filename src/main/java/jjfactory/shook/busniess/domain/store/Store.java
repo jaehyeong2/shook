@@ -1,5 +1,6 @@
 package jjfactory.shook.busniess.domain.store;
 
+import jjfactory.shook.busniess.request.StoreCreate;
 import jjfactory.shook.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -31,5 +32,25 @@ public class Store extends BaseTimeEntity {
         this.name = name;
         this.grade = grade;
         this.productCount = productCount;
+    }
+
+    public static Store create(StoreCreate dto){
+        return Store.builder()
+                .name(dto.getName())
+                .grade("1")
+                .productCount(0)
+                .build();
+    }
+
+    public void incProductCount() {
+        this.productCount += 1;
+    }
+
+    public void decProductCount() {
+        this.productCount -= 1;
+    }
+
+    public void changeName(String name) {
+        this.name = name;
     }
 }

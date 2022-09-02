@@ -23,12 +23,16 @@ public class ProductService{
         Store store = getStore(storeId);
         Product product = Product.addProduct(dto, store);
         productRepository.save(product);
+        store.incProductCount();
         return "y";
     }
 
     public String delete(Long productId){
         Product product = getProduct(productId);
         product.delete();
+
+        Store store = product.getStore();
+        store.decProductCount();
         return "y";
     }
 
