@@ -1,4 +1,4 @@
-package jjfactory.shook.busniess.response;
+package jjfactory.shook.busniess.response.wish;
 
 import jjfactory.shook.busniess.domain.wish.Wish;
 import lombok.Builder;

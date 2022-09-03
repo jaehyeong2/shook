@@ -1,4 +1,4 @@
-package jjfactory.shook.busniess.response;
+package jjfactory.shook.busniess.response.store;
 
 import jjfactory.shook.busniess.domain.store.Store;
 import lombok.AllArgsConstructor;

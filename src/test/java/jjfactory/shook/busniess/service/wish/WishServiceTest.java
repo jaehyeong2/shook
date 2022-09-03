@@ -5,11 +5,10 @@ import jjfactory.shook.busniess.domain.store.Store;
 import jjfactory.shook.busniess.domain.user.User;
 import jjfactory.shook.busniess.domain.wish.Wish;
 import jjfactory.shook.busniess.repository.wish.WishRepository;
-import jjfactory.shook.busniess.response.WishDetailRes;
-import jjfactory.shook.busniess.response.WishRes;
+import jjfactory.shook.busniess.response.wish.WishDetailRes;
+import jjfactory.shook.busniess.response.wish.WishRes;
 import jjfactory.shook.global.entity.DeleteStatus;
 import jjfactory.shook.global.response.PagingRes;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +22,6 @@ import javax.persistence.EntityManager;
 import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @Transactional
 @SpringBootTest

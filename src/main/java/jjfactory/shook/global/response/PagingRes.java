@@ -11,13 +11,14 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 public class PagingRes<T> {
-    private List<T> result;
+
     private Long totalCount;
     private int totalPage;
     private int currentPage;
+    private List<T> resultList;
 
     public PagingRes(Page<T> page) {
-        this.result = page.getContent();
+        this.resultList = page.getContent();
         this.totalCount = page.getTotalElements();
         this.totalPage = page.getTotalPages();
         this.currentPage = page.getPageable().getPageNumber() + 1;

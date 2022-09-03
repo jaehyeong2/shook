@@ -18,7 +18,6 @@ public class Product extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @JoinColumn(name = "store_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Store store;
