@@ -1,14 +1,22 @@
 package jjfactory.shook.busniess.request;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 public class ProductCreate {
     private int price;
     private int stockQuantity;
     private String name;
+    private String description;
+
+    @Builder
+    public ProductCreate(int price, int stockQuantity, String name,String description) {
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.name = name;
+        this.description = description;
+    }
 }

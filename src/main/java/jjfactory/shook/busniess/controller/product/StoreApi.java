@@ -1,6 +1,5 @@
 package jjfactory.shook.busniess.controller.product;
 
-import io.swagger.annotations.Api;
 import jjfactory.shook.busniess.request.ProductCreate;
 import jjfactory.shook.busniess.request.ProductUpdate;
 import jjfactory.shook.busniess.response.product.ProductDetailRes;
