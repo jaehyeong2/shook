@@ -47,6 +47,8 @@ public class AuthService {
         }
         matchPassword(dto.getPassword(),user.getPassword());
         String token = createToken(user);
+
+        user.updateLoginTime();
         return new LoginRes(token);
     }
 
@@ -60,7 +62,7 @@ public class AuthService {
     }
 
     private String createToken(User user){
-        return tokenProvider.createToken(user.getUsername(),user.getUserRole());
+        return tokenProvider.createToken(user.getUsername(),user.getRoles());
     }
 
 

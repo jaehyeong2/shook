@@ -46,10 +46,10 @@ public class User extends BaseTimeEntity {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    private List<Role> userRole;
+    private List<Role> roles;
 
     @Builder
-    public User(String username, String password, String name, String email, String phone, Gender gender, int wishCount, UserGrade grade, int userType, LocalDateTime lastLoginDate, int status, List<Role> userRole,Address address) {
+    public User(String username, String password, String name, String email, String phone, Gender gender, int wishCount, UserGrade grade, int userType, LocalDateTime lastLoginDate, int status, List<Role> roles, Address address) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -61,7 +61,7 @@ public class User extends BaseTimeEntity {
         this.userType = userType;
         this.lastLoginDate = lastLoginDate;
         this.status = status;
-        this.userRole = userRole;
+        this.roles = roles;
         this.address = address;
     }
 
@@ -74,10 +74,12 @@ public class User extends BaseTimeEntity {
                 .phone(dto.getPhone())
                 .email(dto.getEmail())
                 .grade(UserGrade.FRIEND)
-                .userRole(Collections.singletonList(Role.USER))
+                .roles(Collections.singletonList(Role.USER))
                 .status(0)
                 .wishCount(0)
-                .address(dto.getAddress())
+                .gender(dto.getGender())
+                .address(Address.builder().city(dto.getCity())
+                        .street(dto.getStreet()).zipCode(dto.getZipCode()).build())
                 .build();
     }
 
