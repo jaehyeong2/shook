@@ -1,7 +1,7 @@
 package jjfactory.shook.busniess.controller.product;
 
-import jjfactory.shook.busniess.request.ProductCreate;
-import jjfactory.shook.busniess.request.ProductUpdate;
+import jjfactory.shook.busniess.request.product.ProductCreate;
+import jjfactory.shook.busniess.request.product.ProductUpdate;
 import jjfactory.shook.busniess.response.product.ProductDetailRes;
 import jjfactory.shook.busniess.response.product.ProductRes;
 import jjfactory.shook.busniess.service.product.ProductService;

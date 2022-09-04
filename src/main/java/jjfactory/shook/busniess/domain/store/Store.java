@@ -1,7 +1,7 @@
 package jjfactory.shook.busniess.domain.store;
 
-import jjfactory.shook.busniess.request.StoreCreate;
-import jjfactory.shook.global.entity.BaseTimeEntity;
+import jjfactory.shook.busniess.request.store.StoreCreate;
+import jjfactory.shook.busniess.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

@@ -2,11 +2,10 @@ package jjfactory.shook.busniess.domain.qna;
 
 import jjfactory.shook.busniess.domain.product.Product;
 import jjfactory.shook.busniess.domain.user.User;
-import jjfactory.shook.global.entity.BaseTimeEntity;
+import jjfactory.shook.busniess.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken;
 
 import javax.persistence.*;
 

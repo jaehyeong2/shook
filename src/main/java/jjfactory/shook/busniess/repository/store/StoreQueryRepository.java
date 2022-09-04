@@ -4,7 +4,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 //import jjfactory.shook.busniess.domain.store.QStore;
 import jjfactory.shook.busniess.response.store.StoreRes;
-import jjfactory.shook.global.entity.DeleteStatus;
+import jjfactory.shook.busniess.domain.DeleteStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

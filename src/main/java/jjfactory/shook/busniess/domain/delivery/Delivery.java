@@ -1,6 +1,6 @@
 package jjfactory.shook.busniess.domain.delivery;
 
-import jjfactory.shook.global.entity.BaseTimeEntity;
+import jjfactory.shook.busniess.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

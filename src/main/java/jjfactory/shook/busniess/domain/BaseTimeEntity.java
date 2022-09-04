@@ -1,4 +1,4 @@
-package jjfactory.shook.global.entity;
+package jjfactory.shook.busniess.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
@@ -9,7 +9,6 @@ import javax.persistence.EntityListeners;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @MappedSuperclass

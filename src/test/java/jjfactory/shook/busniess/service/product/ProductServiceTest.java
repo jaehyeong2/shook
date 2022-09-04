@@ -2,9 +2,9 @@ package jjfactory.shook.busniess.service.product;
 
 import jjfactory.shook.busniess.domain.product.Product;
 import jjfactory.shook.busniess.domain.store.Store;
-import jjfactory.shook.busniess.request.ProductCreate;
-import jjfactory.shook.busniess.request.ProductUpdate;
-import jjfactory.shook.global.entity.DeleteStatus;
+import jjfactory.shook.busniess.request.product.ProductCreate;
+import jjfactory.shook.busniess.request.product.ProductUpdate;
+import jjfactory.shook.busniess.domain.DeleteStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

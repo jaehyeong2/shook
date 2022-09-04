@@ -7,7 +7,7 @@ import jjfactory.shook.busniess.domain.wish.Wish;
 import jjfactory.shook.busniess.repository.wish.WishRepository;
 import jjfactory.shook.busniess.response.wish.WishDetailRes;
 import jjfactory.shook.busniess.response.wish.WishRes;
-import jjfactory.shook.global.entity.DeleteStatus;
+import jjfactory.shook.busniess.domain.DeleteStatus;
 import jjfactory.shook.global.response.PagingRes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

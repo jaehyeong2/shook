@@ -1,9 +1,9 @@
 package jjfactory.shook.busniess.domain.product;
 
 import jjfactory.shook.busniess.domain.store.Store;
-import jjfactory.shook.busniess.request.ProductCreate;
-import jjfactory.shook.busniess.request.ProductUpdate;
-import jjfactory.shook.global.entity.BaseTimeEntity;
+import jjfactory.shook.busniess.request.product.ProductCreate;
+import jjfactory.shook.busniess.request.product.ProductUpdate;
+import jjfactory.shook.busniess.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

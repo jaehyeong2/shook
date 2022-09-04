@@ -3,8 +3,8 @@ package jjfactory.shook.busniess.service.store;
 import jjfactory.shook.busniess.domain.store.Store;
 import jjfactory.shook.busniess.repository.store.StoreQueryRepository;
 import jjfactory.shook.busniess.repository.store.StoreRepository;
-import jjfactory.shook.busniess.request.StoreCreate;
-import jjfactory.shook.busniess.request.StoreUpdate;
+import jjfactory.shook.busniess.request.store.StoreCreate;
+import jjfactory.shook.busniess.request.store.StoreUpdate;
 import jjfactory.shook.busniess.response.store.StoreDetailRes;
 import jjfactory.shook.busniess.response.store.StoreRes;
 import lombok.RequiredArgsConstructor;
@@ -31,24 +31,6 @@ public class StoreService {
     public StoreDetailRes findStoreById(Long storeId){
         Store store = getStore(storeId);
         return new StoreDetailRes(store);
-    }
-
-    public String create(StoreCreate dto){
-        Store store = Store.create(dto);
-        storeRepository.save(store);
-        return "y";
-    }
-
-    public String delete(Long storeId){
-        Store store = getStore(storeId);
-        store.delete();
-        return "y";
-    }
-
-    public String update(Long storeId, StoreUpdate dto){
-        Store store = getStore(storeId);
-        store.changeName(dto.getName());
-        return "y";
     }
 
     private Store getStore(Long storeId) {

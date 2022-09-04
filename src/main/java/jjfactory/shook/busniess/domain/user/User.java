@@ -1,7 +1,7 @@
 package jjfactory.shook.busniess.domain.user;
 
 import jjfactory.shook.busniess.request.UserCreate;
-import jjfactory.shook.global.entity.BaseTimeEntity;
+import jjfactory.shook.busniess.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
