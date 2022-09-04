@@ -32,50 +32,7 @@ class ProductServiceTest {
         createProduct();
     }
 
-    @Test
-    @DisplayName("상품 등록")
-    void create() {
-        // given
-        ProductCreate dto = ProductCreate.builder()
-                .name("product")
-                .price(12000)
-                .stockQuantity(50)
-                .build();
 
-        // when
-        Long productId = productService.create(dto, store.getId());
-
-        // then
-        assertThat(productId).isNotNull();
-    }
-
-    @Test
-    @DisplayName("상품 삭제")
-    void delete() {
-        // when
-        product.delete();
-        // then
-        assertThat(product.getDeleteStatus()).isEqualTo(DeleteStatus.Y);
-    }
-
-    @Test
-    @DisplayName("상품 수정")
-    void update() {
-        // given
-        ProductUpdate dto = ProductUpdate.builder()
-                .name("sss")
-                .price(12000)
-                .stockQuantity(50)
-                .build();
-
-        // when
-        product.modify(dto);
-
-        // then
-        assertThat(product.getName()).isEqualTo("sss");
-        assertThat(product.getPrice()).isEqualTo(12000);
-        assertThat(product.getStockQuantity()).isEqualTo(50);
-    }
 
     private void createStore() {
         store = Store.builder().name("store").grade("5").build();

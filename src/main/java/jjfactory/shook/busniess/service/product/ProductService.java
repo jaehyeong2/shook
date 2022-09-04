@@ -36,29 +36,6 @@ public class ProductService{
         return new PagingRes<>(productQueryRepository.findProductsByStoreId(pageable,storeId));
     }
 
-    public Long create(ProductCreate dto,Long storeId){
-        Store store = getStore(storeId);
-        Product product = Product.addProduct(dto, store);
-        productRepository.save(product);
-        store.incProductCount();
-        return product.getId();
-    }
-
-    public String delete(Long productId){
-        Product product = getProduct(productId);
-        product.delete();
-
-        Store store = product.getStore();
-        store.decProductCount();
-        return "y";
-    }
-
-    public String update(Long productId, ProductUpdate dto){
-        Product product = getProduct(productId);
-        product.modify(dto);
-        return "y";
-    }
-
     private Store getStore(Long storeId) {
         return storeRepository.findById(storeId).orElseThrow(NoSuchElementException::new);
     }

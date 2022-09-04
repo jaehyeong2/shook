@@ -30,20 +30,4 @@ public class StoreApi {
         return productService.findProductsByStoreId(new MyPageReq(page,size).of(),storeId);
     }
 
-    @PostMapping("")
-    public ApiRes<Long> addProduct(@PathVariable Long storeId,
-                                   @RequestBody ProductCreate dto){
-        return new ApiRes<>(productService.create(dto,storeId));
-    }
-
-    @DeleteMapping("/{storeId}/products/{productId}")
-    public ApiRes<String> deleteProduct(@PathVariable Long productId){
-        return new ApiRes<>(productService.delete(productId));
-    }
-
-    @PatchMapping("/{storeId}/products/{productId}")
-    public ApiRes<String> modifyProduct(@PathVariable Long productId,
-                                        @RequestBody ProductUpdate dto){
-        return new ApiRes<>(productService.update(productId,dto));
-    }
 }
