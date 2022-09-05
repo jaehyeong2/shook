@@ -5,6 +5,7 @@ import jjfactory.shook.busniess.domain.BaseTimeEntity;
 import jjfactory.shook.busniess.domain.delivery.Delivery;
 import jjfactory.shook.busniess.domain.user.User;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -27,5 +28,18 @@ public class Order extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @Builder
+    public Order(Delivery delivery, User user) {
+        this.delivery = delivery;
+        this.user = user;
+    }
 
+    public static Order create(Delivery delivery,User user){
+        return Order.builder()
+                .delivery(delivery)
+                .user(user)
+                .build();
+    }
+
+    //CANCEL은 deleteStatus로
 }

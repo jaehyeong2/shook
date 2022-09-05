@@ -20,4 +20,6 @@ public class Delivery extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
+
+
 }

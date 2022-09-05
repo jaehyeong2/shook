@@ -2,6 +2,7 @@ package jjfactory.shook.busniess.domain.order;
 
 
 import jjfactory.shook.busniess.domain.product.Product;
+import jjfactory.shook.busniess.request.order.OrderCreate;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,5 +34,12 @@ public class OrderProduct {
         this.product = product;
         this.totalPrice = totalPrice;
         this.count = count;
+    }
+
+    public static OrderProduct create(Order order,Product product){
+        return OrderProduct.builder()
+                .order(order)
+                .product(product)
+                .build();
     }
 }
