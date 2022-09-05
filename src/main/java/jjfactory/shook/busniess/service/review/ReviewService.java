@@ -10,11 +10,11 @@ import jjfactory.shook.busniess.repository.review.ReviewRepository;
 import jjfactory.shook.busniess.repository.user.UserRepository;
 import jjfactory.shook.busniess.request.review.ReviewCreate;
 import jjfactory.shook.busniess.request.review.ReviewUpdate;
-import jjfactory.shook.busniess.response.product.ProductRes;
 import jjfactory.shook.busniess.response.review.ReviewRes;
+import jjfactory.shook.global.handler.ex.BusinessException;
+import jjfactory.shook.global.handler.ex.ErrorCode;
 import jjfactory.shook.global.response.PagingRes;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,14 +45,16 @@ public class ReviewService {
         return review.getId();
     }
 
-    public String delete(Long reviewId){
+    public String delete(Long reviewId, User user){
         Review review = getReview(reviewId);
+        if(!user.getId().equals(review.getUser().getId())) throw new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED);
         review.delete();
         return "y";
     }
 
-    public String update(Long reviewId, ReviewUpdate dto){
+    public String update(Long reviewId, ReviewUpdate dto, User user){
         Review review = getReview(reviewId);
+        if(!user.getId().equals(review.getUser().getId())) throw new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED);
         review.modify(dto);
         return "y";
     }
