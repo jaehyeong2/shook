@@ -35,8 +35,6 @@ public class QuestionQueryRepository {
                 .from(question)
                 .where(question.deleteStatus.eq(DeleteStatus.N),
                         question.user.id.eq(userId))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
                 .fetch().size();
 
         return new PageImpl<>(result,pageable,total);
