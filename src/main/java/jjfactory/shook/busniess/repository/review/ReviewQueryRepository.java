@@ -36,8 +36,6 @@ public class ReviewQueryRepository {
                 .from(review)
                 .where(review.deleteStatus.eq(DeleteStatus.N),
                         review.product.id.eq(productId))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
                 .fetch().size();
 
         return new PageImpl<>(results,pageable,total);

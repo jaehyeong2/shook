@@ -31,8 +31,6 @@ public class WishQueryRepository {
         int total = queryFactory.select(Projections.constructor(WishRes.class, wish))
                 .from(wish)
                 .where(wish.user.id.eq(userId))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
                 .fetch().size();
 
         return new PageImpl<>(wishList,pageable,total);

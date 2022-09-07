@@ -32,8 +32,7 @@ public class ProductQueryRepository {
         int total = queryFactory.select(Projections.constructor(ProductRes.class, product))
                 .from(product)
                 .where(product.deleteStatus.eq(DeleteStatus.N))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize()).fetch().size();
+                .fetch().size();
 
         return new PageImpl<>(results,pageable,total);
     }

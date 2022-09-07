@@ -44,8 +44,7 @@ public class CartQueryRepository {
                 .innerJoin(store)
                 .on(cart.product.store.id.eq(store.id))
                 .where(cart.user.id.eq(userId))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize()).fetch().size();
+                .fetch().size();
 
         return new PageImpl<>(results,pageable,total);
     }

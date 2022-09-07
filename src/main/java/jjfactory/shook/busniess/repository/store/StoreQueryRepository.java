@@ -32,7 +32,7 @@ public class StoreQueryRepository {
         int total = queryFactory.select(Projections.constructor(StoreRes.class, store))
                 .from(store)
                 .where(store.deleteStatus.eq(DeleteStatus.N))
-                .offset(pageable.getOffset()).fetch().size();
+                .fetch().size();
 
         return new PageImpl<>(results,pageable,total);
     }
