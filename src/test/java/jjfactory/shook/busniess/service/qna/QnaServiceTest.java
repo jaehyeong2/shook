@@ -85,9 +85,10 @@ class QnaServiceTest {
         QuestionCreate dto = QuestionCreate.builder()
                 .title("저기요")
                 .content("이거 왤케 비쌈?")
+                .productId(product.getId())
                 .build();
         //when
-        Long questionId = qnaService.createQuestion(dto, wogud, product.getId());
+        Long questionId = qnaService.createQuestion(dto, wogud);
         Question question = em.find(Question.class, questionId);
 
         //then

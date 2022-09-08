@@ -35,21 +35,21 @@ public class QnaService {
         return new PagingRes<>(questionQueryRepository.findMyQuestion(pageable,user.getId()));
     }
 
-    public Long createQuestion(QuestionCreate dto, User user,Long productId){
-        Product product = getProduct(productId);
+    public Long createQuestion(QuestionCreate dto, User user){
+        Product product = getProduct(dto.getProductId());
         Question question = Question.create(dto, user, product);
         questionRepository.save(question);
 
         return question.getId();
     }
 
-    public String delete(Long questionId){
+    public String delete(Long questionId,User user){
         Question question = getQuestion(questionId);
         question.delete();
         return "Y";
     }
 
-    public String update(Long questionId, QuestionUpdate dto){
+    public String update(Long questionId, QuestionUpdate dto,User user){
         Question question = getQuestion(questionId);
         question.modify(dto);
         return "Y";
