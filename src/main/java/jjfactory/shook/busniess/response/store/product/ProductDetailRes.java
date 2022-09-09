@@ -1,14 +1,10 @@
-package jjfactory.shook.busniess.response.product;
+package jjfactory.shook.busniess.response.store.product;
 
-import jjfactory.shook.busniess.domain.product.Product;
-import jjfactory.shook.busniess.domain.product.ProductColor;
-import jjfactory.shook.busniess.domain.product.ProductImage;
-import jjfactory.shook.busniess.domain.product.ProductSize;
+import jjfactory.shook.busniess.domain.store.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 

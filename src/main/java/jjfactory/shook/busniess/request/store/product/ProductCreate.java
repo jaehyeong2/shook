@@ -1,4 +1,4 @@
-package jjfactory.shook.busniess.request.product;
+package jjfactory.shook.busniess.request.store.product;
 
 import lombok.Builder;
 import lombok.Getter;

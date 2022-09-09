@@ -1,4 +1,5 @@
-package jjfactory.shook.busniess.domain.product;
+package jjfactory.shook.busniess.domain.store.product;
+
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,14 +10,13 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class ProductSize {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductColor {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JoinColumn(name = "product_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
 
-    private String size;
+    private String name;
 }

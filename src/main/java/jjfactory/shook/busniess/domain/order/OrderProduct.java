@@ -1,8 +1,7 @@
 package jjfactory.shook.busniess.domain.order;
 
 
-import jjfactory.shook.busniess.domain.product.Product;
-import jjfactory.shook.busniess.request.order.OrderCreate;
+import jjfactory.shook.busniess.domain.store.product.Product;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

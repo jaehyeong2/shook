@@ -1,10 +1,10 @@
 package jjfactory.shook.busniess.service.qna;
 
 
-import jjfactory.shook.busniess.domain.product.Product;
+import jjfactory.shook.busniess.domain.store.product.Product;
 import jjfactory.shook.busniess.domain.qna.Question;
 import jjfactory.shook.busniess.domain.user.User;
-import jjfactory.shook.busniess.repository.product.ProductRepository;
+import jjfactory.shook.busniess.repository.store.product.ProductRepository;
 import jjfactory.shook.busniess.repository.qna.AnswerRepository;
 import jjfactory.shook.busniess.repository.qna.QuestionQueryRepository;
 import jjfactory.shook.busniess.repository.qna.QuestionRepository;
@@ -13,7 +13,6 @@ import jjfactory.shook.busniess.request.qna.QuestionUpdate;
 import jjfactory.shook.busniess.response.qna.MyQuestionRes;
 import jjfactory.shook.global.response.PagingRes;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

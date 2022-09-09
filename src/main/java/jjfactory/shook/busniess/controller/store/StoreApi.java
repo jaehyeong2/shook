@@ -1,11 +1,10 @@
-package jjfactory.shook.busniess.controller.product;
+package jjfactory.shook.busniess.controller.store;
 
 import io.swagger.annotations.ApiOperation;
-import jjfactory.shook.busniess.request.product.ProductCreate;
-import jjfactory.shook.busniess.request.product.ProductUpdate;
-import jjfactory.shook.busniess.response.product.ProductDetailRes;
-import jjfactory.shook.busniess.response.product.ProductRes;
-import jjfactory.shook.busniess.service.product.ProductService;
+import jjfactory.shook.busniess.response.store.product.ProductDetailRes;
+import jjfactory.shook.busniess.response.store.product.ProductRes;
+import jjfactory.shook.busniess.service.store.product.ProductService;
+import jjfactory.shook.busniess.service.store.StoreService;
 import jjfactory.shook.global.request.MyPageReq;
 import jjfactory.shook.global.response.ApiRes;
 import jjfactory.shook.global.response.PagingRes;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class StoreApi {
     private final ProductService productService;
+    private final StoreService storeService;
 
     @ApiOperation(value = "게시물 상세조회")
     @GetMapping("/{storeId}/products/{productId}")

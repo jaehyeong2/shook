@@ -1,7 +1,6 @@
-package jjfactory.shook.busniess.repository.product;
+package jjfactory.shook.busniess.repository.store.product;
 
-import jjfactory.shook.busniess.domain.product.ProductColor;
-import jjfactory.shook.busniess.domain.product.ProductImage;
+import jjfactory.shook.busniess.domain.store.product.ProductColor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

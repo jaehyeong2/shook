@@ -2,11 +2,10 @@ package jjfactory.shook.busniess.repository.cart;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jjfactory.shook.busniess.domain.cart.Cart;
-import jjfactory.shook.busniess.domain.product.Product;
+import jjfactory.shook.busniess.domain.store.product.Product;
 import jjfactory.shook.busniess.domain.store.Store;
 import jjfactory.shook.busniess.domain.user.User;
 import jjfactory.shook.busniess.response.cart.CartResponse;
-import jjfactory.shook.global.request.MyPageReq;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

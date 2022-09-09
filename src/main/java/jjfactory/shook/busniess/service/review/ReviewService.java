@@ -1,10 +1,10 @@
 package jjfactory.shook.busniess.service.review;
 
 
-import jjfactory.shook.busniess.domain.product.Product;
+import jjfactory.shook.busniess.domain.store.product.Product;
 import jjfactory.shook.busniess.domain.review.Review;
 import jjfactory.shook.busniess.domain.user.User;
-import jjfactory.shook.busniess.repository.product.ProductRepository;
+import jjfactory.shook.busniess.repository.store.product.ProductRepository;
 import jjfactory.shook.busniess.repository.review.ReviewQueryRepository;
 import jjfactory.shook.busniess.repository.review.ReviewRepository;
 import jjfactory.shook.busniess.repository.user.UserRepository;

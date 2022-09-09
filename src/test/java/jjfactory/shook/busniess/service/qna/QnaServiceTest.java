@@ -1,7 +1,7 @@
 package jjfactory.shook.busniess.service.qna;
 
 import jjfactory.shook.busniess.domain.DeleteStatus;
-import jjfactory.shook.busniess.domain.product.Product;
+import jjfactory.shook.busniess.domain.store.product.Product;
 import jjfactory.shook.busniess.domain.qna.Question;
 import jjfactory.shook.busniess.domain.store.Store;
 import jjfactory.shook.busniess.domain.user.User;
@@ -10,7 +10,6 @@ import jjfactory.shook.busniess.request.qna.QuestionUpdate;
 import jjfactory.shook.busniess.response.qna.MyQuestionRes;
 import jjfactory.shook.global.request.MyPageReq;
 import jjfactory.shook.global.response.PagingRes;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 @Transactional
 @SpringBootTest

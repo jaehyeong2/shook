@@ -1,6 +1,6 @@
-package jjfactory.shook.busniess.response.product;
+package jjfactory.shook.busniess.response.store.product;
 
-import jjfactory.shook.busniess.domain.product.Product;
+import jjfactory.shook.busniess.domain.store.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

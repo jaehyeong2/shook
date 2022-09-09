@@ -1,20 +1,14 @@
 package jjfactory.shook.busniess.service.product;
 
-import jjfactory.shook.busniess.domain.product.Product;
+import jjfactory.shook.busniess.domain.store.product.Product;
 import jjfactory.shook.busniess.domain.store.Store;
-import jjfactory.shook.busniess.request.product.ProductCreate;
-import jjfactory.shook.busniess.request.product.ProductUpdate;
-import jjfactory.shook.busniess.domain.DeleteStatus;
+import jjfactory.shook.busniess.service.store.product.ProductService;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-
-import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
 @Transactional

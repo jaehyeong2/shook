@@ -1,4 +1,4 @@
-package jjfactory.shook.busniess.domain.product;
+package jjfactory.shook.busniess.domain.store.product;
 
 import jjfactory.shook.busniess.domain.BaseTimeEntity;
 import lombok.AccessLevel;
