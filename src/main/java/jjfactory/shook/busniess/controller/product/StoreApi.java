@@ -12,7 +12,7 @@ import jjfactory.shook.global.response.PagingRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/store")
+@RequestMapping("/stores")
 @RequiredArgsConstructor
 @RestController
 public class StoreApi {
