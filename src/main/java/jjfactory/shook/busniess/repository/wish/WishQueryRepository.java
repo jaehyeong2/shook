@@ -2,6 +2,7 @@ package jjfactory.shook.busniess.repository.wish;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import jjfactory.shook.busniess.domain.DeleteStatus;
 import jjfactory.shook.busniess.domain.wish.QWish;
 import jjfactory.shook.busniess.response.wish.WishDetailRes;
 import jjfactory.shook.busniess.response.wish.WishRes;
@@ -21,16 +22,18 @@ public class WishQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     public Page<WishRes> findWishes(Pageable pageable,Long userId){
-        List<WishRes> wishList = queryFactory.select(Projections.constructor(WishRes.class, QWish.wish))
-                .from(QWish.wish)
-                .where(QWish.wish.user.id.eq(userId))
+        List<WishRes> wishList = queryFactory.select(Projections.constructor(WishRes.class, wish))
+                .from(wish)
+                .where(wish.user.id.eq(userId),
+                        wish.deleteStatus.eq(DeleteStatus.N))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
 
         int total = queryFactory.select(Projections.constructor(WishRes.class, wish))
                 .from(wish)
-                .where(wish.user.id.eq(userId))
+                .where(wish.user.id.eq(userId),
+                        wish.deleteStatus.eq(DeleteStatus.N))
                 .fetch().size();
 
         return new PageImpl<>(wishList,pageable,total);
@@ -39,7 +42,8 @@ public class WishQueryRepository {
     public WishDetailRes findWish(Long wishId){
         return queryFactory.select(Projections.constructor(WishDetailRes.class,wish))
                 .from(wish)
-                .where(wish.id.eq(wishId))
+                .where(wish.id.eq(wishId),
+                        wish.deleteStatus.eq(DeleteStatus.N))
                 .fetchOne();
     }
 }

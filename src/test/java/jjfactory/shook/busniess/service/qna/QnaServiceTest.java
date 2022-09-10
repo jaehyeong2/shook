@@ -115,7 +115,7 @@ class QnaServiceTest {
         em.persist(question);
 
         //when
-        qnaService.delete(question.getId());
+        qnaService.delete(question.getId(),wogud);
 
         //then
         assertThat(question.getDeleteStatus()).isEqualTo(DeleteStatus.Y);
@@ -141,7 +141,7 @@ class QnaServiceTest {
 
         //when
         QuestionUpdate dto = QuestionUpdate.builder().title("바뀌냐?").content("응!").build();
-        qnaService.update(question.getId(),dto);
+        qnaService.update(question.getId(),dto,wogud);
 
         assertThat(question.getTitle()).isEqualTo("바뀌냐?");
         assertThat(question.getContent()).isEqualTo("응!");

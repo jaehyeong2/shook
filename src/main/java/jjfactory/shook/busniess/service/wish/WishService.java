@@ -27,31 +27,33 @@ public class WishService {
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
 
-    public WishDetailRes findWishDetail(Long wishId){
-        return wishQueryRepository.findWish(wishId);
+//    @Transactional(readOnly = true)
+//    public WishDetailRes findWishDetail(Long wishId){
+//        return wishQueryRepository.findWish(wishId);
+//    }
+
+    @Transactional(readOnly = true)
+    public PagingRes<WishRes> findMyWishes(Pageable pageable, User user){
+        return new PagingRes<>(wishQueryRepository.findWishes(pageable,user.getId()));
     }
 
-    public PagingRes<WishRes> findMyWishes(Pageable pageable, Long userid){
-        return new PagingRes<>(wishQueryRepository.findWishes(pageable,userid));
-    }
-
-    public Long create(Long userId,Long productId){
-        User user = getUser(userId);
+    public Long create(User user,Long productId){
+        User findUser = getUser(user.getId());
         Product product = getProduct(productId);
-        Wish wish = Wish.create(user, product);
+        Wish wish = Wish.create(findUser, product);
         wishRepository.save(wish);
 
-        user.increaseWishCount();
+        findUser.increaseWishCount();
+        product.decreaseWishCount();
         return wish.getId();
     }
 
-    public String delete(Long wishId){
+    //TODO 영속성 컨텍스트로 넣게 수정해야함
+    public String delete(User user,Long wishId){
         Wish wish = getWish(wishId);
         wish.delete();
 
-        User user = wish.getUser();
         user.decreaseWishCount();
-//        if(user.getWishCount() < 0) throw new
         return "y";
     }
 

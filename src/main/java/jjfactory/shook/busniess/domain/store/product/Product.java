@@ -25,14 +25,16 @@ public class Product extends BaseTimeEntity {
     private String description;
     private int price;
     private int stockQuantity;
+    private int wishCount;
 
     @Builder
-    public Product(Store store, String name, int price, int stockQuantity,String description) {
+    public Product(Store store, String name, int price, int stockQuantity,String description,int wishCount) {
         this.store = store;
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
         this.description = description;
+        this.wishCount = wishCount;
     }
 
     public static Product addProduct(ProductCreate dto, Store store){
@@ -42,6 +44,7 @@ public class Product extends BaseTimeEntity {
                 .price(dto.getPrice())
                 .description(dto.getDescription())
                 .store(store)
+                .wishCount(0)
                 .build();
     }
 
@@ -51,4 +54,11 @@ public class Product extends BaseTimeEntity {
         this.stockQuantity = dto.getStockQuantity();
     }
 
+    public void increaseCount() {
+        this.wishCount += 1;
+    }
+
+    public void decreaseWishCount() {
+        this.wishCount -= 1;
+    }
 }
