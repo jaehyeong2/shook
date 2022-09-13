@@ -1,5 +1,8 @@
 package jjfactory.shook.global.handler.ex;
 
+import lombok.Getter;
+
+@Getter
 public class BusinessException extends RuntimeException{
     private ErrorCode errorCode;
 

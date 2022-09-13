@@ -4,6 +4,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jjfactory.shook.busniess.domain.DeleteStatus;
 import jjfactory.shook.busniess.domain.wish.QWish;
+import jjfactory.shook.busniess.domain.wish.Wish;
 import jjfactory.shook.busniess.response.wish.WishDetailRes;
 import jjfactory.shook.busniess.response.wish.WishRes;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +47,14 @@ public class WishQueryRepository {
                 .from(wish)
                 .where(wish.id.eq(wishId),
                         wish.deleteStatus.eq(DeleteStatus.N))
+                .fetchOne();
+    }
+
+    public Wish findWishByProductId(Long userId, Long productId){
+        return queryFactory.selectFrom(wish)
+                .where(wish.deleteStatus.eq(DeleteStatus.N),
+                        wish.user.id.eq(userId),
+                        wish.product.id.eq(productId))
                 .fetchOne();
     }
 }

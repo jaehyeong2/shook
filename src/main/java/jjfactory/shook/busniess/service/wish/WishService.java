@@ -10,6 +10,8 @@ import jjfactory.shook.busniess.repository.wish.WishRepository;
 import jjfactory.shook.busniess.repository.wish.WishQueryRepository;
 import jjfactory.shook.busniess.response.wish.WishDetailRes;
 import jjfactory.shook.busniess.response.wish.WishRes;
+import jjfactory.shook.global.handler.ex.BusinessException;
+import jjfactory.shook.global.handler.ex.ErrorCode;
 import jjfactory.shook.global.response.PagingRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -40,6 +42,11 @@ public class WishService {
     public Long create(User user,Long productId){
         User findUser = getUser(user.getId());
         Product product = getProduct(productId);
+
+        if(wishQueryRepository.findWishByProductId(user.getId(),productId) != null){
+            throw new BusinessException(ErrorCode.DUPLICATE_ENTITY);
+        }
+
         Wish wish = Wish.create(findUser, product);
         wishRepository.save(wish);
 
