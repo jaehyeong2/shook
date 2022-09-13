@@ -24,7 +24,8 @@ public class WishQueryRepository {
     public Page<WishRes> findWishes(Pageable pageable,Long userId){
         List<WishRes> wishList = queryFactory.select(Projections.constructor(WishRes.class, wish))
                 .from(wish)
-                .where(wish.user.id.eq(userId),
+                .where(wish.user.id.isNotNull(),
+                        wish.user.id.eq(userId),
                         wish.deleteStatus.eq(DeleteStatus.N))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -32,7 +33,8 @@ public class WishQueryRepository {
 
         int total = queryFactory.select(Projections.constructor(WishRes.class, wish))
                 .from(wish)
-                .where(wish.user.id.eq(userId),
+                .where(wish.user.id.isNotNull(),
+                        wish.user.id.eq(userId),
                         wish.deleteStatus.eq(DeleteStatus.N))
                 .fetch().size();
 

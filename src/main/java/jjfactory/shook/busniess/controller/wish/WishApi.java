@@ -17,13 +17,11 @@ import org.springframework.web.bind.annotation.*;
 public class WishApi {
     private final WishService wishService;
 
-
     @GetMapping("")
     public ApiPagingRes<WishRes> findMyWishes(@RequestParam(required = false,defaultValue = "1") int page,
                                               @RequestParam(required = false,defaultValue = "10") int size,
                                               @AuthenticationPrincipal PrincipalDetails principalDetails){
         return new ApiPagingRes(wishService.findMyWishes(new MyPageReq(page,size).of(),principalDetails.getUser()));
-
     }
 
     @PostMapping("")

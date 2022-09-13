@@ -35,6 +35,10 @@ public class ErrorResponse {
         return new ErrorResponse(ErrorCode.INVALID_TYPE_VALUE, errors);
     }
 
+    public static ErrorResponse of(final ErrorCode code) {
+        return new ErrorResponse(code);
+    }
+
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class FieldError {
