@@ -55,9 +55,12 @@ public class WishService {
         return wish.getId();
     }
 
-    //TODO 영속성 컨텍스트로 넣게 수정해야함
     public String delete(User user,Long wishId){
         Wish wish = getWish(wishId);
+        if(!wish.getUser().getId().equals(user.getId())){
+            throw new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED);
+        }
+
         wish.delete();
 
         user.decreaseWishCount();
