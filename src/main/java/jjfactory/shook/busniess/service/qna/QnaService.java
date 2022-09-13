@@ -11,6 +11,8 @@ import jjfactory.shook.busniess.repository.qna.QuestionRepository;
 import jjfactory.shook.busniess.request.qna.QuestionCreate;
 import jjfactory.shook.busniess.request.qna.QuestionUpdate;
 import jjfactory.shook.busniess.response.qna.MyQuestionRes;
+import jjfactory.shook.global.handler.ex.BusinessException;
+import jjfactory.shook.global.handler.ex.ErrorCode;
 import jjfactory.shook.global.response.PagingRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -44,12 +46,18 @@ public class QnaService {
 
     public String delete(Long questionId,User user){
         Question question = getQuestion(questionId);
+        if (!question.getUser().getId().equals(user.getId())){
+            throw new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED);
+        }
         question.delete();
         return "Y";
     }
 
     public String update(Long questionId, QuestionUpdate dto,User user){
         Question question = getQuestion(questionId);
+        if (!question.getUser().getId().equals(user.getId())){
+            throw new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED);
+        }
         question.modify(dto);
         return "Y";
     }

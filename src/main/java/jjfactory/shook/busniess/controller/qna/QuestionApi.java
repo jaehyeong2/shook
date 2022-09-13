@@ -34,7 +34,6 @@ public class QuestionApi {
         return new ApiRes<>(qnaService.createQuestion(dto,principalDetails.getUser()));
     }
 
-    //TODO 시큐리티 체크 확인
     @DeleteMapping("/{questionId}")
     public ApiRes<String> deleteQuestion(@AuthenticationPrincipal PrincipalDetails principalDetails,
                                        @PathVariable Long questionId){
