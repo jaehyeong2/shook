@@ -1,6 +1,7 @@
 package jjfactory.shook.busniess.service.qna;
 
 
+import jjfactory.shook.busniess.domain.DeleteStatus;
 import jjfactory.shook.busniess.domain.store.product.Product;
 import jjfactory.shook.busniess.domain.qna.Question;
 import jjfactory.shook.busniess.domain.user.User;
@@ -30,7 +31,9 @@ public class QnaService {
     private final AnswerRepository answerRepository;
     private final ProductRepository productRepository;
 
-    //TODO 디테일 조회도 필요. 이건 ANSWER랑 같이 조인해서
+    public void findQuestionDetail(){
+
+    }
 
     public PagingRes<MyQuestionRes> findMyQuestions(Pageable pageable,User user){
         return new PagingRes<>(questionQueryRepository.findMyQuestion(pageable,user.getId()));
@@ -55,7 +58,7 @@ public class QnaService {
 
     public String update(Long questionId, QuestionUpdate dto,User user){
         Question question = getQuestion(questionId);
-        if (!question.getUser().getId().equals(user.getId())){
+        if (!question.getUser().getId().equals(user.getId()) || question.getDeleteStatus().equals(DeleteStatus.Y)){
             throw new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED);
         }
         question.modify(dto);

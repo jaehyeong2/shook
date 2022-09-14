@@ -8,6 +8,8 @@ import jjfactory.shook.busniess.domain.user.User;
 import jjfactory.shook.busniess.request.qna.QuestionCreate;
 import jjfactory.shook.busniess.request.qna.QuestionUpdate;
 import jjfactory.shook.busniess.response.qna.MyQuestionRes;
+import jjfactory.shook.global.handler.ex.BusinessException;
+import jjfactory.shook.global.handler.ex.ErrorCode;
 import jjfactory.shook.global.request.MyPageReq;
 import jjfactory.shook.global.response.PagingRes;
 import org.junit.jupiter.api.DisplayName;
@@ -68,7 +70,7 @@ class QnaServiceTest {
     }
 
     @Test
-    @DisplayName("질문 생성")
+    @DisplayName("질문 생성 성공")
     void createQuestion() {
         //given
         User wogud = User.builder().name("wogud").build();
@@ -122,6 +124,35 @@ class QnaServiceTest {
     }
 
     @Test
+    @DisplayName("다른 유저로 삭제 시도하면 익셉션")
+    void deleteFail() {
+        //given
+        User wogud = User.builder().name("wogud").build();
+        em.persist(wogud);
+
+        User wogud2 = User.builder().name("wogud2").build();
+        em.persist(wogud2);
+
+        Store store = Store.builder().name("store").grade("5").build();
+        em.persist(store);
+
+        Product product = Product.builder().store(store).name("product").build();
+        em.persist(product);
+
+        Question question = Question.builder().product(product).user(wogud)
+                .title("하이요").content("이거 할인 가능?")
+                .build();
+
+        em.persist(question);
+
+        //expected
+        assertThatThrownBy(() -> qnaService.delete(question.getId(),wogud2))
+                .hasCause(new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED));
+
+    }
+
+    @Test
+    @DisplayName("질문 수정 성공")
     void update() {
         //given
         User wogud = User.builder().name("wogud").build();
@@ -143,7 +174,33 @@ class QnaServiceTest {
         QuestionUpdate dto = QuestionUpdate.builder().title("바뀌냐?").content("응!").build();
         qnaService.update(question.getId(),dto,wogud);
 
+        //then
         assertThat(question.getTitle()).isEqualTo("바뀌냐?");
         assertThat(question.getContent()).isEqualTo("응!");
+    }
+
+    @Test
+    @DisplayName("질문 수정 글쓴이랑 다른 유저가하면 익셉션")
+    void updateFail() {
+        //given
+        User wogud = User.builder().name("wogud").build();
+        em.persist(wogud);
+
+        Store store = Store.builder().name("store").grade("5").build();
+        em.persist(store);
+
+        Product product = Product.builder().store(store).name("product").build();
+        em.persist(product);
+
+        Question question = Question.builder().product(product).user(wogud)
+                .title("하이요").content("이거 할인 가능?")
+                .build();
+
+        em.persist(question);
+        QuestionUpdate dto = QuestionUpdate.builder().title("바뀌냐?").content("응!").build();
+
+        //expected
+        assertThatThrownBy(() -> qnaService.update(question.getId(),dto,wogud))
+                .hasCause(new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED));
     }
 }

@@ -19,8 +19,8 @@ import java.io.IOException;
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-    @Value("${spring.profiles.active}")
-    private String active;
+//    @Value("${spring.profiles.active}")
+//    private String active;
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
 
@@ -72,7 +72,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ErrorResponse> handleException(Exception e, HttpServletRequest sRequest) throws IOException {
         log.error("handleEntityNotFoundException", e);
-        log.info(active);
         log.info(sRequest.getRequestURI());
 
         final ErrorResponse response = ErrorResponse.of(ErrorCode.INTERNAL_SERVER_ERROR);
