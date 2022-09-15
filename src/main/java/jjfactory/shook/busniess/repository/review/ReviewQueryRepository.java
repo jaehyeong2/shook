@@ -4,8 +4,6 @@ package jjfactory.shook.busniess.repository.review;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jjfactory.shook.busniess.domain.DeleteStatus;
-import jjfactory.shook.busniess.domain.review.QReview;
-import jjfactory.shook.busniess.domain.review.Review;
 import jjfactory.shook.busniess.response.review.ReviewRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -22,7 +20,7 @@ import static jjfactory.shook.busniess.domain.review.QReview.*;
 public class ReviewQueryRepository {
     private final JPAQueryFactory queryFactory;
 
-    public Page<ReviewRes> findReviews(Pageable pageable,Long productId){
+    public Page<ReviewRes> findProductsAllReviews(Pageable pageable, Long productId){
         List<ReviewRes> results = queryFactory.select(Projections.constructor(ReviewRes.class, review))
                 .from(review)
                 .where(review.deleteStatus.eq(DeleteStatus.N),

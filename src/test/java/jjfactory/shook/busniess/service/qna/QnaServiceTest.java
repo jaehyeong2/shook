@@ -62,20 +62,24 @@ class QnaServiceTest {
                 em.persist(question);
             }else{
                 Question question = Question.builder().product(product).user(jjj)
-                        .title("제목"+i).content("이거 할인 가능?")
+                        .title("제목"+i).content("이거 할인 불가?")
                         .build();
                 em.persist(question);
             }
         }
 
         //when
-        PagingRes<MyQuestionRes> result = qnaService.findMyQuestions(
+        PagingRes<MyQuestionRes> 검색조건x = qnaService.findMyQuestions(
                 new MyPageReq(1, 10).of(), wogud,null,null,null);
 
-        //then
-        assertThat(result.getTotalCount()).isEqualTo(15);
-        assertThat(result.getResultList().get(0).getTitle()).isEqualTo("제목30");
+        PagingRes<MyQuestionRes> 키워드검색 = qnaService.findMyQuestions(
+                new MyPageReq(1, 10).of(), wogud,null,null,"불가");
 
+        //then
+        assertThat(검색조건x.getTotalCount()).isEqualTo(15);
+        assertThat(검색조건x.getResultList().get(0).getTitle()).isEqualTo("제목30");
+
+        assertThat(키워드검색.getTotalCount()).isEqualTo(0);
     }
 
     @Test

@@ -32,7 +32,7 @@ public class ReviewService {
 
     @Transactional(readOnly = true)
     public PagingRes<ReviewRes> findReviewsByProductId(Pageable pageable, Long productId){
-        return new PagingRes<>(reviewQueryRepository.findReviews(pageable,productId));
+        return new PagingRes<>(reviewQueryRepository.findProductsAllReviews(pageable,productId));
     }
 
 

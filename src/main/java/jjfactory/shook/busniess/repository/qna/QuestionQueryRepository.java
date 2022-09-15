@@ -39,7 +39,9 @@ public class QuestionQueryRepository {
         int total = queryFactory.select(Projections.constructor(MyQuestionRes.class, question))
                 .from(question)
                 .where(question.deleteStatus.eq(DeleteStatus.N),
-                        question.user.id.eq(userId))
+                        question.user.id.eq(userId),
+                        between(startDate,endDate),
+                        contains(query))
                 .fetch().size();
 
         return new PageImpl<>(result,pageable,total);

@@ -7,6 +7,7 @@ import jjfactory.shook.busniess.request.store.StoreCreate;
 import jjfactory.shook.busniess.request.store.StoreUpdate;
 import jjfactory.shook.busniess.response.store.StoreDetailRes;
 import jjfactory.shook.busniess.response.store.StoreRes;
+import jjfactory.shook.global.response.PagingRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,8 +24,8 @@ public class StoreService {
     private final StoreQueryRepository storeQueryRepository;
 
     @Transactional(readOnly = true)
-    public Page<StoreRes> findStores(Pageable pageable){
-        return storeQueryRepository.findStores(pageable);
+    public PagingRes<StoreRes> findStores(Pageable pageable, String query){
+        return new PagingRes<>(storeQueryRepository.findStores(pageable,query));
     }
 
     @Transactional(readOnly = true)

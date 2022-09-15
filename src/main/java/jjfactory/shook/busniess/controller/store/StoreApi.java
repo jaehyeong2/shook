@@ -1,11 +1,13 @@
 package jjfactory.shook.busniess.controller.store;
 
 import io.swagger.annotations.ApiOperation;
+import jjfactory.shook.busniess.response.store.StoreRes;
 import jjfactory.shook.busniess.response.store.product.ProductDetailRes;
 import jjfactory.shook.busniess.response.store.product.ProductRes;
 import jjfactory.shook.busniess.service.store.product.ProductService;
 import jjfactory.shook.busniess.service.store.StoreService;
 import jjfactory.shook.global.request.MyPageReq;
+import jjfactory.shook.global.response.ApiPagingRes;
 import jjfactory.shook.global.response.ApiRes;
 import jjfactory.shook.global.response.PagingRes;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,14 @@ import org.springframework.web.bind.annotation.*;
 public class StoreApi {
     private final ProductService productService;
     private final StoreService storeService;
+
+    @ApiOperation(value = "게시물 상세조회")
+    @GetMapping("")
+    public ApiPagingRes<StoreRes> findStores(@RequestParam(required = false,defaultValue = "1") int page,
+                                             @RequestParam(required = false,defaultValue = "10") int size,
+                                             @RequestParam(required = false) String query){
+        return new ApiPagingRes<>(storeService.findStores(new MyPageReq(page,size).of(),query));
+    }
 
     @ApiOperation(value = "게시물 상세조회")
     @GetMapping("/{storeId}/products/{productId}")
