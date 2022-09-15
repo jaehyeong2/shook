@@ -12,6 +12,7 @@ import jjfactory.shook.global.handler.ex.BusinessException;
 import jjfactory.shook.global.handler.ex.ErrorCode;
 import jjfactory.shook.global.request.MyPageReq;
 import jjfactory.shook.global.response.PagingRes;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,20 +32,27 @@ class QnaServiceTest {
     @Autowired
     QnaService qnaService;
 
+    User wogud;
+    Store store;
+    Product product;
+    @BeforeEach
+    void setUp(){
+        wogud = User.builder().name("wogud").build();
+        em.persist(wogud);
+
+        store = Store.builder().name("store").grade("5").build();
+        em.persist(store);
+
+        product = Product.builder().store(store).name("product").build();
+        em.persist(product);
+    }
+
     @Test
     @DisplayName("내 질문 조회 페이징")
     void findMyQuestions() {
         //given
-        User wogud = User.builder().name("wogud").build();
         User jjj = User.builder().name("jjj").build();
-        em.persist(wogud);
         em.persist(jjj);
-
-        Store store = Store.builder().name("store").grade("5").build();
-        em.persist(store);
-
-        Product product = Product.builder().store(store).name("product").build();
-        em.persist(product);
 
         for (int i = 1; i < 31; i++) {
             if(i%2 == 0){
@@ -61,7 +69,8 @@ class QnaServiceTest {
         }
 
         //when
-        PagingRes<MyQuestionRes> result = qnaService.findMyQuestions(new MyPageReq(1, 10).of(), wogud);
+        PagingRes<MyQuestionRes> result = qnaService.findMyQuestions(
+                new MyPageReq(1, 10).of(), wogud,null,null,null);
 
         //then
         assertThat(result.getTotalCount()).isEqualTo(15);
@@ -73,15 +82,6 @@ class QnaServiceTest {
     @DisplayName("질문 생성 성공")
     void createQuestion() {
         //given
-        User wogud = User.builder().name("wogud").build();
-        em.persist(wogud);
-
-        Store store = Store.builder().name("store").grade("5").build();
-        em.persist(store);
-
-        Product product = Product.builder().store(store).name("product").build();
-        em.persist(product);
-
         QuestionCreate dto = QuestionCreate.builder()
                 .title("저기요")
                 .content("이거 왤케 비쌈?")
@@ -101,15 +101,6 @@ class QnaServiceTest {
     @DisplayName("삭제 성공")
     void delete() {
         //given
-        User wogud = User.builder().name("wogud").build();
-        em.persist(wogud);
-
-        Store store = Store.builder().name("store").grade("5").build();
-        em.persist(store);
-
-        Product product = Product.builder().store(store).name("product").build();
-        em.persist(product);
-
         Question question = Question.builder().product(product).user(wogud)
                 .title("하이요").content("이거 할인 가능?")
                 .build();
@@ -127,17 +118,8 @@ class QnaServiceTest {
     @DisplayName("다른 유저로 삭제 시도하면 익셉션")
     void deleteFail() {
         //given
-        User wogud = User.builder().name("wogud").build();
-        em.persist(wogud);
-
         User wogud2 = User.builder().name("wogud2").build();
         em.persist(wogud2);
-
-        Store store = Store.builder().name("store").grade("5").build();
-        em.persist(store);
-
-        Product product = Product.builder().store(store).name("product").build();
-        em.persist(product);
 
         Question question = Question.builder().product(product).user(wogud)
                 .title("하이요").content("이거 할인 가능?")
@@ -147,7 +129,7 @@ class QnaServiceTest {
 
         //expected
         assertThatThrownBy(() -> qnaService.delete(question.getId(),wogud2))
-                .hasCause(new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED));
+                .isInstanceOf(BusinessException.class);
 
     }
 
@@ -155,15 +137,6 @@ class QnaServiceTest {
     @DisplayName("질문 수정 성공")
     void update() {
         //given
-        User wogud = User.builder().name("wogud").build();
-        em.persist(wogud);
-
-        Store store = Store.builder().name("store").grade("5").build();
-        em.persist(store);
-
-        Product product = Product.builder().store(store).name("product").build();
-        em.persist(product);
-
         Question question = Question.builder().product(product).user(wogud)
                 .title("하이요").content("이거 할인 가능?")
                 .build();
@@ -183,14 +156,8 @@ class QnaServiceTest {
     @DisplayName("질문 수정 글쓴이랑 다른 유저가하면 익셉션")
     void updateFail() {
         //given
-        User wogud = User.builder().name("wogud").build();
-        em.persist(wogud);
-
-        Store store = Store.builder().name("store").grade("5").build();
-        em.persist(store);
-
-        Product product = Product.builder().store(store).name("product").build();
-        em.persist(product);
+        User wogud2 = User.builder().name("wogud2").build();
+        em.persist(wogud2);
 
         Question question = Question.builder().product(product).user(wogud)
                 .title("하이요").content("이거 할인 가능?")
@@ -200,7 +167,7 @@ class QnaServiceTest {
         QuestionUpdate dto = QuestionUpdate.builder().title("바뀌냐?").content("응!").build();
 
         //expected
-        assertThatThrownBy(() -> qnaService.update(question.getId(),dto,wogud))
-                .hasCause(new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED));
+        assertThatThrownBy(() -> qnaService.update(question.getId(),dto,wogud2))
+                .isInstanceOf(BusinessException.class);
     }
 }

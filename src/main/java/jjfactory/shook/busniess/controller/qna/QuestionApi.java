@@ -24,8 +24,12 @@ public class QuestionApi {
     @GetMapping("")
     public ApiPagingRes<MyQuestionRes> findMyQuestions(@AuthenticationPrincipal PrincipalDetails principalDetails,
                                                        @RequestParam(required = false,defaultValue = "1")int page,
-                                                       @RequestParam(required = false,defaultValue = "10") int size){
-        return new ApiPagingRes<>(qnaService.findMyQuestions(new MyPageReq(page,size).of(),principalDetails.getUser()));
+                                                       @RequestParam(required = false,defaultValue = "10") int size,
+                                                       @RequestParam(required = false)String startDate,
+                                                       @RequestParam(required = false)String endDate,
+                                                       @RequestParam(required = false) String query){
+        return new ApiPagingRes<>(qnaService.findMyQuestions(
+                new MyPageReq(page,size).of(),principalDetails.getUser(),startDate,endDate,query));
     }
 
     @PostMapping("")

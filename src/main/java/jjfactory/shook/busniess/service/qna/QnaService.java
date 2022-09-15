@@ -35,8 +35,8 @@ public class QnaService {
 
     }
 
-    public PagingRes<MyQuestionRes> findMyQuestions(Pageable pageable,User user){
-        return new PagingRes<>(questionQueryRepository.findMyQuestion(pageable,user.getId()));
+    public PagingRes<MyQuestionRes> findMyQuestions(Pageable pageable,User user,String startDate,String endDate,String query){
+        return new PagingRes<>(questionQueryRepository.findMyQuestion(pageable,user.getId(),startDate,endDate,query));
     }
 
     public Long createQuestion(QuestionCreate dto, User user){
