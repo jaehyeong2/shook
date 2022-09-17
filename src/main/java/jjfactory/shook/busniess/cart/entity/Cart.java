@@ -1,7 +1,7 @@
 package jjfactory.shook.busniess.cart.entity;
 
 import jjfactory.shook.global.entity.BaseTimeEntity;
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.user.entity.User;
 import lombok.AccessLevel;
 import lombok.Builder;

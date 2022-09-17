@@ -1,10 +1,10 @@
 package jjfactory.shook.busniess.wish.service;
 
 
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.user.entity.User;
 import jjfactory.shook.busniess.wish.entity.Wish;
-import jjfactory.shook.busniess.store.repository.product.ProductRepository;
+import jjfactory.shook.busniess.product.repository.ProductRepository;
 import jjfactory.shook.busniess.user.repository.UserRepository;
 import jjfactory.shook.busniess.wish.repository.WishRepository;
 import jjfactory.shook.busniess.wish.repository.WishQueryRepository;

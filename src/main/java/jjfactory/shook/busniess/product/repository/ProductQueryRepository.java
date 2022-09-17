@@ -1,8 +1,9 @@
-package jjfactory.shook.busniess.store.repository.product;
+package jjfactory.shook.busniess.product.repository;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jjfactory.shook.busniess.store.dto.res.product.ProductRes;
+import jjfactory.shook.busniess.product.dto.res.ProductRes;
+import jjfactory.shook.busniess.product.entity.QProduct;
 import jjfactory.shook.global.entity.DeleteStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static jjfactory.shook.busniess.store.entity.product.QProduct.*;
+import static jjfactory.shook.busniess.product.entity.QProduct.*;
 
 
 @RequiredArgsConstructor

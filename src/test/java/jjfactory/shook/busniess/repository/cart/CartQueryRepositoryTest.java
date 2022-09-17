@@ -3,7 +3,7 @@ package jjfactory.shook.busniess.repository.cart;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jjfactory.shook.busniess.cart.repository.CartQueryRepository;
 import jjfactory.shook.busniess.cart.entity.Cart;
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.store.entity.Store;
 import jjfactory.shook.busniess.user.entity.User;
 import jjfactory.shook.busniess.cart.dto.res.CartResponse;

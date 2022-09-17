@@ -1,4 +1,4 @@
-package jjfactory.shook.busniess.store.entity.product;
+package jjfactory.shook.busniess.product.entity;
 
 import jjfactory.shook.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;

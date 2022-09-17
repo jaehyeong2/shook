@@ -1,6 +1,6 @@
 package jjfactory.shook.busniess.review.entity;
 
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.user.entity.User;
 import jjfactory.shook.global.entity.BaseTimeEntity;
 import jjfactory.shook.busniess.review.dto.req.ReviewCreate;

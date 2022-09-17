@@ -1,8 +1,8 @@
 package jjfactory.shook.busniess.service.product;
 
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.store.entity.Store;
-import jjfactory.shook.busniess.store.service.product.ProductService;
+import jjfactory.shook.busniess.product.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

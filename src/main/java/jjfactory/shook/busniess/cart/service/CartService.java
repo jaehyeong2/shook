@@ -2,11 +2,11 @@ package jjfactory.shook.busniess.cart.service;
 
 
 import jjfactory.shook.busniess.cart.entity.Cart;
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.user.entity.User;
 import jjfactory.shook.busniess.cart.repository.CartQueryRepository;
 import jjfactory.shook.busniess.cart.repository.CartRepository;
-import jjfactory.shook.busniess.store.repository.product.ProductRepository;
+import jjfactory.shook.busniess.product.repository.ProductRepository;
 import jjfactory.shook.busniess.cart.dto.res.CartResponse;
 import jjfactory.shook.global.handler.ex.BusinessException;
 import jjfactory.shook.global.handler.ex.ErrorCode;

@@ -1,8 +1,8 @@
-package jjfactory.shook.busniess.store.entity.product;
+package jjfactory.shook.busniess.product.entity;
 
+import jjfactory.shook.busniess.product.dto.req.ProductCreate;
+import jjfactory.shook.busniess.product.dto.req.ProductUpdate;
 import jjfactory.shook.busniess.store.entity.Store;
-import jjfactory.shook.busniess.store.dto.req.product.ProductCreate;
-import jjfactory.shook.busniess.store.dto.req.product.ProductUpdate;
 import jjfactory.shook.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -28,12 +28,12 @@ public class Product extends BaseTimeEntity {
     private int wishCount;
 
     @Builder
-    public Product(Store store, String name, int price, int stockQuantity,String description,int wishCount) {
+    public Product(Store store, String name, String description, int price, int stockQuantity, int wishCount) {
         this.store = store;
         this.name = name;
+        this.description = description;
         this.price = price;
         this.stockQuantity = stockQuantity;
-        this.description = description;
         this.wishCount = wishCount;
     }
 

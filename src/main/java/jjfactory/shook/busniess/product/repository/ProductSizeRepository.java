@@ -1,6 +1,6 @@
-package jjfactory.shook.busniess.store.repository.product;
+package jjfactory.shook.busniess.product.repository;
 
-import jjfactory.shook.busniess.store.entity.product.ProductSize;
+import jjfactory.shook.busniess.product.entity.ProductSize;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

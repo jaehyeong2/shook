@@ -1,6 +1,6 @@
 package jjfactory.shook.busniess.service.wish;
 
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.store.entity.Store;
 import jjfactory.shook.busniess.user.entity.User;
 import jjfactory.shook.busniess.wish.entity.Wish;

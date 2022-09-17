@@ -1,16 +1,16 @@
-package jjfactory.shook.busniess.store.service.product;
+package jjfactory.shook.busniess.product.service;
 
-import jjfactory.shook.busniess.store.entity.product.Product;
-import jjfactory.shook.busniess.store.entity.product.ProductColor;
-import jjfactory.shook.busniess.store.entity.product.ProductSize;
+import jjfactory.shook.busniess.product.entity.Product;
+import jjfactory.shook.busniess.product.entity.ProductColor;
+import jjfactory.shook.busniess.product.entity.ProductSize;
 import jjfactory.shook.busniess.store.entity.Store;
-import jjfactory.shook.busniess.store.repository.product.ProductColorRepository;
-import jjfactory.shook.busniess.store.repository.product.ProductQueryRepository;
-import jjfactory.shook.busniess.store.repository.product.ProductRepository;
-import jjfactory.shook.busniess.store.repository.product.ProductSizeRepository;
+import jjfactory.shook.busniess.product.repository.ProductColorRepository;
+import jjfactory.shook.busniess.product.repository.ProductQueryRepository;
+import jjfactory.shook.busniess.product.repository.ProductRepository;
+import jjfactory.shook.busniess.product.repository.ProductSizeRepository;
 import jjfactory.shook.busniess.store.repository.StoreRepository;
-import jjfactory.shook.busniess.store.dto.res.product.ProductDetailRes;
-import jjfactory.shook.busniess.store.dto.res.product.ProductRes;
+import jjfactory.shook.busniess.product.dto.res.ProductDetailRes;
+import jjfactory.shook.busniess.product.dto.res.ProductRes;
 import jjfactory.shook.global.response.PagingRes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

@@ -2,7 +2,7 @@ package jjfactory.shook.busniess.service.qna;
 
 import jjfactory.shook.busniess.qna.service.QnaService;
 import jjfactory.shook.global.entity.DeleteStatus;
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.qna.entity.Question;
 import jjfactory.shook.busniess.store.entity.Store;
 import jjfactory.shook.busniess.user.entity.User;

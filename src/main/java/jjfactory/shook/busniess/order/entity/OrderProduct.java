@@ -1,7 +1,7 @@
 package jjfactory.shook.busniess.order.entity;
 
 
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

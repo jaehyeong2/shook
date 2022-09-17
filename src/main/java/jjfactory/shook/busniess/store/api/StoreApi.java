@@ -2,9 +2,9 @@ package jjfactory.shook.busniess.store.api;
 
 import io.swagger.annotations.ApiOperation;
 import jjfactory.shook.busniess.store.dto.res.StoreRes;
-import jjfactory.shook.busniess.store.dto.res.product.ProductDetailRes;
-import jjfactory.shook.busniess.store.dto.res.product.ProductRes;
-import jjfactory.shook.busniess.store.service.product.ProductService;
+import jjfactory.shook.busniess.product.dto.res.ProductDetailRes;
+import jjfactory.shook.busniess.product.dto.res.ProductRes;
+import jjfactory.shook.busniess.product.service.ProductService;
 import jjfactory.shook.busniess.store.service.StoreService;
 import jjfactory.shook.global.request.MyPageReq;
 import jjfactory.shook.global.response.ApiPagingRes;

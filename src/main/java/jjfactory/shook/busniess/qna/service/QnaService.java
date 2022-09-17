@@ -2,10 +2,10 @@ package jjfactory.shook.busniess.qna.service;
 
 
 import jjfactory.shook.global.entity.DeleteStatus;
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.qna.entity.Question;
 import jjfactory.shook.busniess.user.entity.User;
-import jjfactory.shook.busniess.store.repository.product.ProductRepository;
+import jjfactory.shook.busniess.product.repository.ProductRepository;
 import jjfactory.shook.busniess.qna.repository.AnswerRepository;
 import jjfactory.shook.busniess.qna.repository.QuestionQueryRepository;
 import jjfactory.shook.busniess.qna.repository.QuestionRepository;

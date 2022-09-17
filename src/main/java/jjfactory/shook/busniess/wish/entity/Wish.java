@@ -1,6 +1,6 @@
 package jjfactory.shook.busniess.wish.entity;
 
-import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.user.entity.User;
 import jjfactory.shook.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
