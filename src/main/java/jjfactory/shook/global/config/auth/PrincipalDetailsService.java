@@ -1,7 +1,7 @@
 package jjfactory.shook.global.config.auth;
 
-import jjfactory.shook.busniess.domain.user.User;
-import jjfactory.shook.busniess.repository.user.UserRepository;
+import jjfactory.shook.busniess.user.entity.User;
+import jjfactory.shook.busniess.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

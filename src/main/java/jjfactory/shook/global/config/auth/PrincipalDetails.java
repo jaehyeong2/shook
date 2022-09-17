@@ -1,6 +1,6 @@
 package jjfactory.shook.global.config.auth;
 
-import jjfactory.shook.busniess.domain.user.User;
+import jjfactory.shook.busniess.user.entity.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

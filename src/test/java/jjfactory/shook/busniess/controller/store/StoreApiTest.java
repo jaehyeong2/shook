@@ -1,7 +1,7 @@
 package jjfactory.shook.busniess.controller.store;
 
-import jjfactory.shook.busniess.domain.store.product.Product;
-import jjfactory.shook.busniess.domain.store.Store;
+import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.store.entity.Store;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

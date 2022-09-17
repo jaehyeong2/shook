@@ -1,13 +1,13 @@
 package jjfactory.shook.busniess.service.wish;
 
-import jjfactory.shook.busniess.domain.store.product.Product;
-import jjfactory.shook.busniess.domain.store.Store;
-import jjfactory.shook.busniess.domain.user.User;
-import jjfactory.shook.busniess.domain.wish.Wish;
-import jjfactory.shook.busniess.repository.wish.WishRepository;
-import jjfactory.shook.busniess.response.wish.WishDetailRes;
-import jjfactory.shook.busniess.response.wish.WishRes;
-import jjfactory.shook.busniess.domain.DeleteStatus;
+import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.store.entity.Store;
+import jjfactory.shook.busniess.user.entity.User;
+import jjfactory.shook.busniess.wish.entity.Wish;
+import jjfactory.shook.busniess.wish.repository.WishRepository;
+import jjfactory.shook.busniess.wish.dto.res.WishRes;
+import jjfactory.shook.global.entity.DeleteStatus;
+import jjfactory.shook.busniess.wish.service.WishService;
 import jjfactory.shook.global.response.PagingRes;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

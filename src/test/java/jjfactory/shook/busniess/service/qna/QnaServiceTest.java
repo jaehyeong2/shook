@@ -1,15 +1,15 @@
 package jjfactory.shook.busniess.service.qna;
 
-import jjfactory.shook.busniess.domain.DeleteStatus;
-import jjfactory.shook.busniess.domain.store.product.Product;
-import jjfactory.shook.busniess.domain.qna.Question;
-import jjfactory.shook.busniess.domain.store.Store;
-import jjfactory.shook.busniess.domain.user.User;
-import jjfactory.shook.busniess.request.qna.QuestionCreate;
-import jjfactory.shook.busniess.request.qna.QuestionUpdate;
-import jjfactory.shook.busniess.response.qna.MyQuestionRes;
+import jjfactory.shook.busniess.qna.service.QnaService;
+import jjfactory.shook.global.entity.DeleteStatus;
+import jjfactory.shook.busniess.store.entity.product.Product;
+import jjfactory.shook.busniess.qna.entity.Question;
+import jjfactory.shook.busniess.store.entity.Store;
+import jjfactory.shook.busniess.user.entity.User;
+import jjfactory.shook.busniess.qna.dto.req.QuestionCreate;
+import jjfactory.shook.busniess.qna.dto.req.QuestionUpdate;
+import jjfactory.shook.busniess.qna.dto.res.MyQuestionRes;
 import jjfactory.shook.global.handler.ex.BusinessException;
-import jjfactory.shook.global.handler.ex.ErrorCode;
 import jjfactory.shook.global.request.MyPageReq;
 import jjfactory.shook.global.response.PagingRes;
 import org.junit.jupiter.api.BeforeEach;
