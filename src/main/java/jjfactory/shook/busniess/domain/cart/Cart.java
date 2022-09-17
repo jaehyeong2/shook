@@ -1,5 +1,6 @@
 package jjfactory.shook.busniess.domain.cart;
 
+import jjfactory.shook.busniess.domain.BaseTimeEntity;
 import jjfactory.shook.busniess.domain.store.product.Product;
 import jjfactory.shook.busniess.domain.user.User;
 import lombok.AccessLevel;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Cart {
+public class Cart extends BaseTimeEntity {
 
     @Id @GeneratedValue
     private Long id;
@@ -35,5 +36,12 @@ public class Cart {
         this.product = product;
         this.user = user;
         this.createDate = createDate;
+    }
+
+    public static Cart create(Product product,User user){
+        return Cart.builder()
+                .product(product)
+                .user(user)
+                .build();
     }
 }
