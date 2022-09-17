@@ -13,12 +13,14 @@ public class QuestionCreate {
     private String title;
     private String content;
     private QuestionType type;
+    private boolean secret;
 
     @Builder
-    public QuestionCreate(String title, String content, QuestionType type,Long productId) {
+    public QuestionCreate(String title, String content, QuestionType type,Long productId,boolean secret) {
         this.productId = productId;
         this.title = title;
         this.content = content;
         this.type = type;
+        this.secret = secret;
     }
 }

@@ -34,13 +34,20 @@ public class Question extends BaseTimeEntity {
     @Lob
     private String content;
 
+    private boolean isSecret;
+
+    @Enumerated(EnumType.STRING)
+    private AnswerStatus answerStatus;
+
     @Builder
-    public Question(User user, Product product, QuestionType questionType, String title, String content) {
+    public Question(User user, Product product, QuestionType questionType, String title, String content, boolean isSecret, AnswerStatus answerStatus) {
         this.user = user;
         this.product = product;
         this.questionType = questionType;
         this.title = title;
         this.content = content;
+        this.isSecret = isSecret;
+        this.answerStatus = answerStatus;
     }
 
     public static Question create(QuestionCreate dto, User user, Product product){
@@ -50,6 +57,8 @@ public class Question extends BaseTimeEntity {
                 .content(dto.getContent())
                 .title(dto.getTitle())
                 .questionType(dto.getType())
+                .isSecret(dto.isSecret())
+                .answerStatus(AnswerStatus.N)
                 .build();
     }
 

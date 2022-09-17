@@ -1,4 +1,4 @@
-package jjfactory.shook.busniess.service.product;
+package jjfactory.shook.busniess.product.service;
 
 import jjfactory.shook.busniess.product.entity.Product;
 import jjfactory.shook.busniess.store.entity.Store;

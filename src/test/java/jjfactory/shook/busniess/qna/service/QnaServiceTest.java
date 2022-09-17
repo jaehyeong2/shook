@@ -1,4 +1,4 @@
-package jjfactory.shook.busniess.service.qna;
+package jjfactory.shook.busniess.qna.service;
 
 import jjfactory.shook.busniess.qna.service.QnaService;
 import jjfactory.shook.global.entity.DeleteStatus;

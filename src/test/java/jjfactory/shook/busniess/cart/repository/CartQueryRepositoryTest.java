@@ -1,4 +1,4 @@
-package jjfactory.shook.busniess.repository.cart;
+package jjfactory.shook.busniess.cart.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jjfactory.shook.busniess.cart.repository.CartQueryRepository;
