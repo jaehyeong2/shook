@@ -17,6 +17,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.NoSuchElementException;
+
 @Transactional
 @RequiredArgsConstructor
 @Service
@@ -27,7 +29,7 @@ public class AuthService {
     private final BCryptPasswordEncoder encoder;
     private final TokenProvider tokenProvider;
 
-    public String signUp(UserCreate dto){
+    public Long signUp(UserCreate dto){
         usernameDuplicateCheck(dto);
         String rawPassword = dto.getPassword();
         String encPassword = encoder.encode(rawPassword);
@@ -37,6 +39,15 @@ public class AuthService {
 
         Address address = Address.create(dto, user);
         addressRepository.save(address);
+        return user.getId();
+    }
+
+    public String withDraw(User user,Long userId){
+        if(!user.getId().equals(userId)) throw new BusinessException(ErrorCode.HANDLE_ACCESS_DENIED);
+
+        user.delete();
+        Address address = addressRepository.findByUserId(user.getId());
+        address.delete();
         return "Y";
     }
 

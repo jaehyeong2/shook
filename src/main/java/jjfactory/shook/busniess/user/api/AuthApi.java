@@ -29,7 +29,7 @@ public class AuthApi {
 
     @ApiOperation("회원가입")
     @PostMapping("/signup")
-    public ApiRes<String> signUp(@Valid @RequestBody UserCreate userDto){
+    public ApiRes<Long> signUp(@Valid @RequestBody UserCreate userDto){
         return new ApiRes<>(authService.signUp(userDto));
     }
 }

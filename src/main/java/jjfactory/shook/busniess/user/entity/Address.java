@@ -1,5 +1,6 @@
 package jjfactory.shook.busniess.user.entity;
 
+import jjfactory.shook.busniess.user.dto.req.AddressUpdate;
 import jjfactory.shook.busniess.user.dto.req.UserCreate;
 import jjfactory.shook.busniess.user.repository.AddressRepository;
 import jjfactory.shook.global.entity.BaseTimeEntity;
@@ -53,5 +54,13 @@ public class Address extends BaseTimeEntity {
                 .zipCode(dto.getZipCode())
                 .isBaseAddr(dto.isBaseAddr())
                 .build();
+    }
+
+    public void modify(AddressUpdate dto) {
+        this.city = dto.getCity();
+        this.street = dto.getStreet();
+        this.zipCode = dto.getZipCode();
+        this.alias = dto.getAlias();
+        isBaseAddr = dto.isBaseAddr();
     }
 }
