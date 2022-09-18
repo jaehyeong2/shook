@@ -1,5 +1,7 @@
 package jjfactory.shook.busniess.user.service;
 
+import jjfactory.shook.busniess.user.entity.Address;
+import jjfactory.shook.busniess.user.repository.AddressRepository;
 import jjfactory.shook.global.entity.DeleteStatus;
 import jjfactory.shook.busniess.user.entity.User;
 import jjfactory.shook.busniess.user.repository.UserRepository;
@@ -20,17 +22,21 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AuthService {
     private final UserRepository userRepository;
+    private final AddressRepository addressRepository;
     private final PasswordEncoder passwordEncoder;
     private final BCryptPasswordEncoder encoder;
     private final TokenProvider tokenProvider;
 
-    public String signUp(UserCreate userDto){
-        usernameDuplicateCheck(userDto);
-        String rawPassword = userDto.getPassword();
+    public String signUp(UserCreate dto){
+        usernameDuplicateCheck(dto);
+        String rawPassword = dto.getPassword();
         String encPassword = encoder.encode(rawPassword);
 
-        User user = User.create(userDto,encPassword);
+        User user = User.create(dto,encPassword);
         userRepository.save(user);
+
+        Address address = Address.create(dto, user);
+        addressRepository.save(address);
         return "Y";
     }
 

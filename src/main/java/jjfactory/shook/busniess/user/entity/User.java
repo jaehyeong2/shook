@@ -33,8 +33,6 @@ public class User extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private UserGrade grade;  // 회원 등급
-    @Embedded
-    private Address address;
 
     @Comment("0: 통합회원, 1: 카카오 간편가입, 2: 네이버 간편가입")
     private int userType;   // 회원 유형
@@ -49,7 +47,7 @@ public class User extends BaseTimeEntity {
     private List<Role> roles;
 
     @Builder
-    public User(String username, String password, String name, String email, String phone, Gender gender, int wishCount, UserGrade grade, int userType, LocalDateTime lastLoginDate, int status, List<Role> roles, Address address) {
+    public User(String username, String password, String name, String email, String phone, Gender gender, int wishCount, UserGrade grade, int userType, LocalDateTime lastLoginDate, int status, List<Role> roles) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -62,7 +60,6 @@ public class User extends BaseTimeEntity {
         this.lastLoginDate = lastLoginDate;
         this.status = status;
         this.roles = roles;
-        this.address = address;
     }
 
     public static User create(UserCreate dto, String encPassword){
@@ -78,8 +75,6 @@ public class User extends BaseTimeEntity {
                 .status(0)
                 .wishCount(0)
                 .gender(dto.getGender())
-                .address(Address.builder().city(dto.getCity())
-                        .street(dto.getStreet()).zipCode(dto.getZipCode()).build())
                 .build();
     }
 

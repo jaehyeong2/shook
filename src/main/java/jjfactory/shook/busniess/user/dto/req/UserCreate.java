@@ -28,11 +28,13 @@ public class UserCreate {
     private String city;
     private String street;
     private String zipCode;
+    private boolean isBaseAddr;
+    private String alias;
 
     private int userType;   // 회원 유형
 
     @Builder
-    public UserCreate(String username, String password, String name, String email, String phone, Gender gender, String city, String street, String zipCode, int userType) {
+    public UserCreate(String username, String password, String name, String email, String phone, Gender gender, String city, String street, String zipCode, boolean isBaseAddr, String alias, int userType) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -42,6 +44,8 @@ public class UserCreate {
         this.city = city;
         this.street = street;
         this.zipCode = zipCode;
+        this.isBaseAddr = isBaseAddr;
+        this.alias = alias;
         this.userType = userType;
     }
 }
